@@ -1,6 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
-
 const App = () => {
   const course = 'Half Stack application development'
   const part1 = 'Fundamentals of React'
