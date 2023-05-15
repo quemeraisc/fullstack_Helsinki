@@ -1,5 +1,5 @@
 # fullstack_Helsinki
-taking the open course on full stack dev from Helsinki University
+taking the open course on [full stack dev from Helsinki University](https://fullstackopen.com/en/)
 
 ## part0 
 
