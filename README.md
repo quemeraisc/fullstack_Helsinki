@@ -7,4 +7,4 @@ taking the open course on [full stack dev from Helsinki University](https://full
 
 ## part1 
 
-part1 implementation, commits are loosely associated with the different steps.
+[part1](https://fullstackopen.com/en/part1) implementation, commits are loosely associated with the different steps.
