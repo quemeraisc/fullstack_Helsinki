@@ -1,12 +1,44 @@
 import { useState } from 'react'
 
-const Stats = () => {
+const Stats = ({good,neutral,bad,total}) => {
+    return (
+      <div>
+          <hr />
+          <h2>
+            Statistics
+          </h2>
+          <Stat
+            title = "good"
+            stat = {good}
+          />
+          <Stat
+              title = "neutral"
+              stat = {neutral}
+          />
+          <Stat
+              title = "bad"
+              stat = {bad}
+          />
+          <Stat
+              title = "All"
+              stat = {total}
+          />
+          <Stat
+              title = "Average"
+              stat = {(good - bad) / total}
+          />
+          <Stat
+              title = "Positive"
+              stat = {(good / total) * 100}
+          />
+
+      </div>
+    )
 }
 
 const Stat = ({title, stat}) => {
     return (
       <div>
-          <hr />
           <p>
               {title}: {stat}
           </p>
@@ -21,14 +53,6 @@ const App = () => {
     const [bad, setBad] = useState(0)
     const [total, setTotal] = useState(0)
     
-    // const all = () => {
-    //     total =  good + neutral + bad
-    //     return total
-    // }
-    const average = () => {
-        if (total === 0) return 0
-        return (good - bad) / total
-    }
     const percentPositve = () => {
         if (total === 0) return 0
         return (good / total) * 100
@@ -63,32 +87,11 @@ const App = () => {
             }>
                 bad
             </button>
-            <h2>
-                Statistics
-            </h2>
-            <Stat
-                title = "good"
-                stat = {good}
-            />
-            <Stat
-                title = "neutral"
-                stat = {neutral}
-            />
-            <Stat
-                title = "bad"
-                stat = {bad}
-            />
-            <Stat
-                title = "All"
-                stat = {total}
-            />
-            <Stat
-                title = "Average"
-                stat = {average()}
-            />
-            <Stat
-                title = "Positive"
-                stat = {percentPositve()}
+            <Stats
+                good = {good}
+                neutral = {neutral}
+                bad = {bad}
+                total = {total}
             />
         </div>
     )
