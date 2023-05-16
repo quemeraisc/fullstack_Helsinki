@@ -18,54 +18,61 @@ const Stats = ({good,neutral,bad,total}) => {
           <h2>
             Statistics
           </h2>
+          <table>
           <StatisticLine title="good" stat={good} />
           <StatisticLine title="neutral" stat={neutral} />
           <StatisticLine title="bad" stat={bad} />
           <StatisticLine title="All" stat={total} />
           <StatisticLine title="Average" stat={(good - bad) / total} />
-          <StatisticLine title="Positive" stat={(good / total) * 100} />
+          <StatisticLine title="Positive" stat={(good / total) * 100} text="%"/>
+          </table>
       </div>
     )
 }
 
-const StatisticLine = ({title, stat}) => {
+const StatisticLine = ({title, stat, text}) => {
     return (
-      <div>
-          <p>
-              {title}: {stat}
-          </p>
-      </div>
+      <tr>
+          <td>
+              {title}
+          </td>
+          <td>
+              {stat} {text}
+          </td>
+      </tr>
     )
 }
 
-const AppButton = ({value, text, setValue, setTotal, value2, value3}) => {
-    return (
-        <button onClick={() => {
-            const updatedValue = value + 1
-            setValue(updatedValue);
-            setTotal(updatedValue+value3+value3);
-            }
-        }>
-            {text}
-        </button>
-    )
-}
-
-const Buttons  = ({good, neutral, bad, setGood, setTotal, setNeutral, setBad}) => {
+const Buttons = ({good, neutral, bad, setGood, setTotal, setNeutral, setBad}) => {
     return (
         <div>
           <h2>
             Give Feedback
           </h2>
-          <AppButton
-            value={good} text="good" setValue={setGood} setTotal={setTotal} value2={neutral} value3={bad}
-          />
-          <AppButton
-             value={neutral} text="neutral" setValue={setNeutral} setTotal={setTotal} value2={good} value3={bad}
-          />
-          <AppButton
-             value={bad} text="bad" setValue={setBad} setTotal={setTotal} value2={neutral} value3={good}
-          />
+          <button onClick={() => {
+              const updatedValue = good + 1
+              setGood(updatedValue);
+              setTotal(updatedValue+neutral+bad);
+              }
+          }>
+              good
+          </button>
+          <button onClick={() => {
+              const updatedValue = neutral + 1
+              setNeutral(updatedValue);
+              setTotal(good+updatedValue+bad);
+              }
+          }>
+              neutral
+          </button>
+          <button onClick={() => {
+              const updatedValue = bad + 1
+              setBad(updatedValue);
+              setTotal(good+neutral+updatedValue);
+              }
+          }>
+              bad
+          </button>
         </div>
     )
 }
