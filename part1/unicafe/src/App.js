@@ -2,9 +2,15 @@ import { useState } from 'react'
 
 const Stats = ({title, stat}) => {
     return (
-    <p>
-        {title} {stat}
-    </p>
+      <div>
+          <hr />
+          <h4>
+              {title}
+          </h4>
+          <p>
+           {stat}
+          </p>
+      </div>
     )
 }
 
