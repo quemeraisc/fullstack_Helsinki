@@ -26,6 +26,10 @@ const App = () => {
         if (total === 0) return 0
         return (good - bad) / total
     }
+    const percentPositve = () => {
+        if (total === 0) return 0
+        return (good / total) * 100
+    }
 
     return (
         <div>
@@ -63,6 +67,10 @@ const App = () => {
             <Stats
                 title = "Average"
                 stat = {average()}
+            />
+            <Stats
+                title = "Positive"
+                stat = {percentPositve()}
             />
         </div>
     )
