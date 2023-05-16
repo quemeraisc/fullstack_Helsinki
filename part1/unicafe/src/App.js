@@ -4,11 +4,8 @@ const Stats = ({title, stat}) => {
     return (
       <div>
           <hr />
-          <h4>
-              {title}
-          </h4>
           <p>
-           {stat}
+              {title}: {stat}
           </p>
       </div>
     )
@@ -19,6 +16,16 @@ const App = () => {
     const [good, setGood] = useState(0)
     const [neutral, setNeutral] = useState(0)
     const [bad, setBad] = useState(0)
+    let total = 0
+    
+    const all = () => {
+        total =  good + neutral + bad
+        return total
+    }
+    const average = () => {
+        if (total === 0) return 0
+        return (good - bad) / total
+    }
 
     return (
         <div>
@@ -48,6 +55,14 @@ const App = () => {
             <Stats
                 title = "bad"
                 stat = {bad}
+            />
+            <Stats
+                title = "All"
+                stat = {all()}
+            />
+            <Stats
+                title = "Average"
+                stat = {average()}
             />
         </div>
     )
