@@ -31,9 +31,9 @@ taking the open course on [full stack dev from Helsinki University](https://full
 - [ ] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)
 
 ### exercises :
-* [courseinfo](https://github.com/quemeraisc/fullstack_Helsinki/tree/main/part2/courseinfo/src)
-				- 2.1 [x]
-				- 2.2 [ ]
-				- 2.3 [ ]
-				- 2.4 [ ]
-				- 2.5 [ ]
+- [courseinfo](https://github.com/quemeraisc/fullstack_Helsinki/tree/main/part2/courseinfo/src)
+  - 2.1 [x]
+  - 2.2 [ ]
+  - 2.3 [ ]
+  - 2.4 [ ]
+  - 2.5 [ ]
