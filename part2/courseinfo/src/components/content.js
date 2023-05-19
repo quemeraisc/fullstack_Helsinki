@@ -3,15 +3,12 @@ import Part from './part'
 const Content = ({ parts }) => {
   return (
     <>
+    {parts.map((part, id) =>
       <Part
-        part={parts[0]} 
+        key={id}
+        part={part} 
       />
-      <Part
-        part={parts[1]} 
-      />
-      <Part
-        part={parts[2]} 
-      />      
+    )}
     </>
   )
 }
