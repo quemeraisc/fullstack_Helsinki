@@ -13,19 +13,36 @@ const NextButton = ({anecdotes, setSelected}) => {
   )
 }
 
-const VoteButton = ({selected, points, setPoints}) => {
+const VoteButton = ({selected, points, setPoints, setBest}) => {
   return (
     <button onClick={() => {
       console.log(selected, 'voted')
-      console.log(points[selected], 'voted')
+      console.log('before', points[selected], 'voted', points)
       const copy  = [ ...points ]
       copy[selected] += 1
+      console.log('after', points[selected], 'voted', points, copy)
+      // better use copy here because of the async nature of updates
+      const max = copy.indexOf(Math.max(...copy))
+      console.log(Math.max( ...copy), max)
       setPoints(copy)
-      console.log(points[selected], 'voted')
+      setBest(max)
     }
     }>
       Vote
     </button>
+  )
+}
+
+const DisplayAnecdote = ({anecdotes, pos, points}) => {
+  return (
+    <div>
+      <p>
+      {anecdotes[pos]}
+      </p>
+      <p>
+      has {points[pos]} votes
+      </p>
+    </div>
   )
 }
 
@@ -42,24 +59,36 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [mostVoted, setBest] = useState(0)
   const [points, setPoints] = useState(Array(anecdotes.length).fill(0))
 
   return (
     <div>
-      {anecdotes[selected]}
-      <br />
-      {points}
-      <br />
-      has {points[selected]} votes
-      <br />
+      <h2>
+        Anecdote of the day
+      </h2>
+      <DisplayAnecdote
+        anecdotes={anecdotes}
+        pos={selected}
+        points={points}
+      />
       <VoteButton
         selected={selected}
         points={points}
         setPoints={setPoints}
+        setBest={setBest}
       />
       <NextButton
         anecdotes={anecdotes}
         setSelected={setSelected}
+      />
+      <h2>
+        Anecdote with most votes
+      </h2>
+      <DisplayAnecdote
+        anecdotes={anecdotes}
+        pos={mostVoted}
+        points={points}
       />
     </div>
   )
