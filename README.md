@@ -25,8 +25,8 @@ taking the open course on [full stack dev from Helsinki University](https://full
 [part2](https://fullstackopen.com/en/part2) 
 
 - [x] [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
-- [] [Forms](https://fullstackopen.com/en/part2/forms)
-- [] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
-- [] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
-- [] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)
+- [ ] [Forms](https://fullstackopen.com/en/part2/forms)
+- [ ] [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
+- [ ] [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
+- [ ] [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)
 
