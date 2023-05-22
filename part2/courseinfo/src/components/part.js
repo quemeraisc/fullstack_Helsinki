@@ -1,5 +1,5 @@
 const Part = ({ part }) => 
-  <p>
+  <p key={part.id}>
     {part.name} {part.exercises}
   </p>
 
