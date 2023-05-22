@@ -33,7 +33,7 @@ taking the open course on [full stack dev from Helsinki University](https://full
 ### exercises :
 - [courseinfo](https://github.com/quemeraisc/fullstack_Helsinki/tree/main/part2/courseinfo/src)
   - [x] 2.1
-  - [ ] 2.2
-  - [ ] 2.3
-  - [ ] 2.4
-  - [ ] 2.5
+  - [x] 2.2
+  - [x] 2.3
+  - [x] 2.4
+  - [x] 2.5
