@@ -38,7 +38,7 @@ taking the open course on [full stack dev from Helsinki University](https://full
   - [x] 2.4
   - [x] 2.5
 - [The Phonebook](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10)
-  - [ ] 2.6
+  - [x] 2.6
   - [ ] 2.7
   - [ ] 2.8
   - [ ] 2.9
