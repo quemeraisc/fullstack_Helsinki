@@ -5,15 +5,21 @@ const App = () => {
   const [persons, setPersons] = useState(
     [
       { 
-        name: 'Claude Quemerais'
+        name: 'Claude Quemerais',
+        number: '+33 123 456 789'
       }
     ]
   )
 
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
+  }
+  
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value)
   }
 
   const addPerson = (event) => {
@@ -26,6 +32,7 @@ const App = () => {
       console.log('not found')
     const newPerson = {
       name: newName,
+      number: newNumber,
     }
     setPersons(persons.concat(newPerson))
     setNewName('')
@@ -46,7 +53,16 @@ const App = () => {
             onChange={handleNameChange}
           />
         </div>
+        <br />
         <div>
+          number:
+          <input 
+            value={newNumber}
+            onChange={handleNumberChange}
+          />
+        </div>
+        <div>
+          <br />
           <button type="submit">add</button>
         </div>
       </form>
@@ -57,14 +73,18 @@ const App = () => {
         {persons.map((person) => 
           <Number
             key={person.name}
-            number={person.name}
+            person={person}
           />
         )
         }
       </div>
       <div>
-        debug: {newName}
-        {}
+        <p>
+        --------
+        </p>
+        <p>
+        debug: {newName} {newNumber}
+        </p>
       </div>
     </div>
   );
