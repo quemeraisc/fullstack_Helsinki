@@ -19,12 +19,21 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault()
     console.log('form button clicked ', event.target)
+    if (!persons.some(function(person) {
+      return person.name === newName
+    }))
+    {
+      console.log('not found')
     const newPerson = {
       name: newName,
     }
     setPersons(persons.concat(newPerson))
     setNewName('')
+    } else {
+      alert(`${newName} is already in the phonebook`)
+    }
   }
+
 
   return (
     <div>
@@ -55,6 +64,7 @@ const App = () => {
       </div>
       <div>
         debug: {newName}
+        {}
       </div>
     </div>
   );
