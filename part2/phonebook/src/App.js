@@ -5,9 +5,21 @@ const App = () => {
   const [persons, setPersons] = useState(
     [
       { 
-        name: 'Claude Quemerais',
-        number: '+33 123 456 789'
-      }
+        name: 'Arto Hellas',
+        number: '+40 123 456 789'
+      },
+      { 
+        name: 'Ada Lovelace',
+        number: '+49 123 456 789'
+      },
+      { 
+        name: 'Dan Abramov',
+        number: '+12 123 456 789'
+      },
+      { 
+        name: 'Mary Poppendieck',
+        number: '+39 123 456 789'
+      },
     ]
   )
 
