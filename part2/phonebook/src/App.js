@@ -1,5 +1,8 @@
 import {useState } from 'react'
 import Number from './components/number'
+import Entry from './components/entry'
+import Search from './components/search'
+import Debug from './components/debug'
 
 const App = () => {
   const [persons, setPersons] = useState(
@@ -22,7 +25,6 @@ const App = () => {
       },
     ]
   )
-
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -61,48 +63,29 @@ const App = () => {
     }
     setPersons(persons.concat(newPerson))
     setNewName('')
+    setNewNumber('')
     } else {
       alert(`${newName} is already in the phonebook`)
     }
   }
 
-
   return (
     <div>
       <h2>Phonebook</h2>
       <h3>Search</h3>
-      <form >
-        filter by name : 
-        <input
-          value={searchedName}
-          onChange={handleSearchName}
-        />
-      </form >
+      <Search
+        searchedName={searchedName}
+        handleSearchName={handleSearchName}
+      />
       <h3>Add a new entry</h3>
-      <form onSubmit={addPerson}>
-        <div>
-          name:
-          <input
-            value={newName}
-            onChange={handleNameChange}
-          />
-        </div>
-        <br />
-        <div>
-          number:
-          <input 
-            value={newNumber}
-            onChange={handleNumberChange}
-          />
-        </div>
-        <div>
-          <br />
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Entry
+        addPerson={addPerson}
+        newName={newName}
+        handleNameChange={handleNameChange}
+        newNumber={newNumber}
+        handleNumberChange={handleNumberChange}
+      />
       <h2>Numbers</h2>
-      ...
-
       <div>
         {foundPersons.map((person) => 
           <Number
@@ -112,14 +95,9 @@ const App = () => {
         )
         }
       </div>
-      <div>
-        <p>
-        --------
-        </p>
-        <p>
-        debug: {searchedName}
-        </p>
-      </div>
+      <Debug
+        item={searchedName}
+      />
     </div>
   );
 }
