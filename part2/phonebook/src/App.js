@@ -28,12 +28,12 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   
   const [searchedName, setSearchedName] = useState('')
-  const foundPersons = persons.map(function(person) {
+  const filterPersons = (person) => {
     if (person.name.toLowerCase().includes(searchedName.toLowerCase())){
       return person
-    }
-    return ''
-  });
+   }
+  }
+  const foundPersons = persons.filter(filterPersons)
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)

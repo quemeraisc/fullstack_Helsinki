@@ -41,5 +41,5 @@ taking the open course on [full stack dev from Helsinki University](https://full
   - [x] 2.6
   - [x] 2.7
   - [x] 2.8
-  - [ ] 2.9
+  - [x] 2.9
   - [ ] 2.10
