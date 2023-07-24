@@ -1,46 +1,28 @@
-import {useState } from 'react'
+import {useState, useEffect } from 'react'
+import axios from 'axios'
 import Number from './components/number'
 import Entry from './components/entry'
 import Search from './components/search'
 import Debug from './components/debug'
 
 const App = () => {
-  const [persons, setPersons] = useState(
-    [
-      { 
-        name: 'Arto Hellas',
-        number: '+40 123 456 789'
-      },
-      { 
-        name: 'Ada Lovelace',
-        number: '+49 123 456 789'
-      },
-      { 
-        name: 'Dan Abramov',
-        number: '+12 123 456 789'
-      },
-      { 
-        name: 'Mary Poppendieck',
-        number: '+39 123 456 789'
-      },
-    ]
-  )
+  const [persons, setPersons] = useState([])
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  
+
   const [searchedName, setSearchedName] = useState('')
   const filterPersons = (person) => {
-    if (person.name.toLowerCase().includes(searchedName.toLowerCase())){
+    if (person.name.toLowerCase().includes(searchedName.toLowerCase())) {
       return person
-   }
+    }
   }
   const foundPersons = persons.filter(filterPersons)
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
-  
+
   const handleNumberChange = (event) => {
     setNewNumber(event.target.value)
   }
@@ -52,22 +34,31 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault()
     console.log('form button clicked ', event.target)
-    if (!persons.some(function(person) {
+    if (!persons.some(function (person) {
       return person.name === newName
-    }))
-    {
+    })) {
       console.log('not found')
-    const newPerson = {
-      name: newName,
-      number: newNumber,
-    }
-    setPersons(persons.concat(newPerson))
-    setNewName('')
-    setNewNumber('')
+      const newPerson = {
+        name: newName,
+        number: newNumber
+      }
+      setPersons(persons.concat(newPerson))
+      setNewName('')
+      setNewNumber('')
     } else {
       alert(`${newName} is already in the phonebook`)
     }
   }
+
+  useEffect(() => {
+    console.log('Effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        console.log('promise fulfilled with persons')
+        setPersons(response.data)
+      })
+  }, [])
 
   return (
     <div>
@@ -87,19 +78,18 @@ const App = () => {
       />
       <h2>Numbers</h2>
       <div>
-        {foundPersons.map((person) => 
+        {foundPersons.map((person) =>
           <Number
-            key={person.name}
+            key={person.id}
             person={person}
           />
-        )
-        }
+        )}
       </div>
       <Debug
         item={searchedName}
       />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
