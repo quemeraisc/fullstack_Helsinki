@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Number from './components/number'
 import Entry from './components/entry'
 import Search from './components/search'
 import Debug from './components/debug'
+import personService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -42,14 +42,13 @@ const App = () => {
         name: newName,
         number: newNumber
       }
-      setNewName('')
-      setNewNumber('')
-      axios
-        .post('http://localhost:3001/persons', newPerson)
-        .then(response => {
-          setPersons(persons.concat(response.data))
+      personService
+        .create(newPerson)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
         })
-      // console.log(person.name)
     } else {
       alert(`${newName} is already in the phonebook`)
     }
@@ -57,11 +56,10 @@ const App = () => {
 
   useEffect(() => {
     console.log('Effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled with persons')
-        setPersons(response.data)
+    personService
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons)
       })
   }, [])
 
