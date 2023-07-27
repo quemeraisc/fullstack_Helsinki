@@ -37,10 +37,14 @@ taking the open course on [full stack dev from Helsinki University](https://full
   - [x] 2.3
   - [x] 2.4
   - [x] 2.5
-- [The Phonebook](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10)
+- [The Phonebook](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-15)
   - [x] 2.6
   - [x] 2.7
   - [x] 2.8
   - [x] 2.9
   - [x] 2.10
   - [x] 2.11
+  - [x] 2.12
+  - [ ] 2.13
+  - [ ] 2.14
+  - [ ] 2.15
