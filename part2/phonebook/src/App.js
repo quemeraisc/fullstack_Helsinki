@@ -5,12 +5,31 @@ import Search from './components/search'
 import Debug from './components/debug'
 import personService from './services/persons'
 
+const Notif = ({message}) => {
+  const notifStyle = {
+    color: 'white',
+    background: 'teal',
+    fontSize: 20,
+    borderStyle: 'solid',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10
+  }
+  return (
+    <div style={notifStyle}>
+      <br />
+      <em>{message}</em>
+    </div>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([])
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
+  const [notifMessage, setNotifMessage] = useState(null)
   const [searchedName, setSearchedName] = useState('')
   const filterPersons = (person) => {
     if (person.name.toLowerCase().includes(searchedName.toLowerCase())) {
@@ -48,6 +67,7 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          setNotifMessage(`${returnedPerson.name} added`)
         })
     } else {
       if (window.confirm(`${newName} is already in the phonebook`)) {
@@ -87,6 +107,7 @@ const App = () => {
 
   return (
     <div>
+      <Notif message={notifMessage} />
       <h2>Phonebook</h2>
       <h3>Search</h3>
       <Search
