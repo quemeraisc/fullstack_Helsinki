@@ -54,6 +54,14 @@ const App = () => {
     }
   }
 
+  const handlePersonDelete = (id) => {
+    // This is problematic with Firefox but works in Edge
+    if (window.confirm(`Delete ${id} ?`)) {
+      console.log(`deleted ${id}`)
+      personService.deletePerson(id)
+    }
+  }
+
   useEffect(() => {
     console.log('Effect')
     personService
@@ -85,6 +93,7 @@ const App = () => {
           <Number
             key={person.id}
             person={person}
+            deletePerson={() => handlePersonDelete(person.id)}
           />
         )}
       </div>

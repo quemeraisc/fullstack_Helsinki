@@ -1,10 +1,11 @@
-const Number = ({person}) => {
+const Number = ({ person, deletePerson }) => {
   return (
-    <div>
-      <p>
+    <form onSubmit={deletePerson}>
+      <div>
         {person.name} {person.number}
-      </p>
-    </div>
+        <button type='submit'>delete person</button>
+      </div>
+    </form>
   )
 }
 
