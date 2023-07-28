@@ -50,7 +50,21 @@ const App = () => {
           setNewNumber('')
         })
     } else {
-      alert(`${newName} is already in the phonebook`)
+      if (window.confirm(`${newName} is already in the phonebook`)) {
+        const personObj = persons.find(person => person.name === newName)
+        const index = persons.indexOf(personObj)
+        console.log(personObj.id)
+        const changedPerson = { ...personObj, number: newNumber }
+        console.log(changedPerson)
+        personService
+          .updateNumber(personObj.id, changedPerson)
+          .then(returnedPerson => {
+            persons[index] = returnedPerson
+            setPersons(persons)
+            setNewName('')
+            setNewNumber('')
+          })
+      }
     }
   }
 
